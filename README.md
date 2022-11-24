@@ -1,4 +1,4 @@
-# AsyncDNSServer_RP2040W
+# AsyncDNSServer_RP2040W Library
 
 
 [![arduino-library-badge](https://www.ardu-badge.com/badge/AsyncDNSServer_RP2040W.svg?)](https://www.ardu-badge.com/AsyncDNSServer_RP2040W)
@@ -6,8 +6,11 @@
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](#Contributing)
 [![GitHub issues](https://img.shields.io/github/issues/khoih-prog/AsyncDNSServer_RP2040W.svg)](http://github.com/khoih-prog/AsyncDNSServer_RP2040W/issues)
 
+
 <a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Donate to my libraries using BuyMeACoffee" style="height: 50px !important;width: 181px !important;" ></a>
 <a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-orange.svg?logo=buy-me-a-coffee&logoColor=FFDD00" style="height: 20px !important;width: 200px !important;" ></a>
+<a href="https://profile-counter.glitch.me/khoih-prog/count.svg" title="Total khoih-prog Visitor count"><img src="https://profile-counter.glitch.me/khoih-prog/count.svg" style="height: 30px;width: 200px;"></a>
+<a href="https://profile-counter.glitch.me/khoih-prog-AsyncDNSServer_RP2040W/count.svg" title="AsyncDNSServer_RP2040W Visitor count"><img src="https://profile-counter.glitch.me/khoih-prog-AsyncDNSServer_RP2040W/count.svg" style="height: 30px;width: 200px;"></a>
 
 ---
 ---
@@ -75,10 +78,10 @@ to apply the better and faster **asynchronous** feature into **RASPBERRY_PI_PICO
 
 ### Currently Supported Boards
 
-1. **RASPBERRY_PI_PICO_W with CYW43439 WiFi** using [**arduino-pico core v2.4.0+**](https://github.com/earlephilhower/arduino-pico)
+1. **RASPBERRY_PI_PICO_W with CYW43439 WiFi** using [**arduino-pico core**](https://github.com/earlephilhower/arduino-pico)
 
 <p align="center">
-    <img src="https://github.com/khoih-prog/AsyncDNSServer_RP2040W/blob/main/pics/RP2040W-pinout.svg">
+    <img src="https://github.com/khoih-prog/AsyncDNSServer_RP2040W/raw/main/pics//RP2040W-pinout.svg">
 </p>
 
 
@@ -88,7 +91,7 @@ to apply the better and faster **asynchronous** feature into **RASPBERRY_PI_PICO
 ## Prerequisites
 
  1. [`Arduino IDE 1.8.19+` for Arduino](https://github.com/arduino/Arduino). [![GitHub release](https://img.shields.io/github/release/arduino/Arduino.svg)](https://github.com/arduino/Arduino/releases/latest)
- 2. [`Earle Philhower's arduino-pico core v2.4.0+`](https://github.com/earlephilhower/arduino-pico) for **RASPBERRY_PI_PICO_W with CYW43439 WiFi**, etc. [![GitHub release](https://img.shields.io/github/release/earlephilhower/arduino-pico.svg)](https://github.com/earlephilhower/arduino-pico/releases/latest)
+ 2. [`Earle Philhower's arduino-pico core v2.6.3+`](https://github.com/earlephilhower/arduino-pico) for **RASPBERRY_PI_PICO_W with CYW43439 WiFi**, etc. [![GitHub release](https://img.shields.io/github/release/earlephilhower/arduino-pico.svg)](https://github.com/earlephilhower/arduino-pico/releases/latest)
  3. [`AsyncUDP_RP2040W library v1.0.0+`](https://github.com/khoih-prog/AsyncUDP_RP2040W) for RASPBERRY_PI_PICO_W with CYW43439 WiFi. To install. check [![arduino-library-badge](https://www.ardu-badge.com/badge/AsyncUDP_RP2040W.svg?)](https://www.ardu-badge.com/AsyncUDP_RP2040W)
  
 ---
@@ -125,14 +128,14 @@ The current library implementation, using `xyz-Impl.h` instead of standard `xyz.
 
 You can include this `.hpp` file
 
-```
+```cpp
 // Can be included as many times as necessary, without `Multiple Definitions` Linker Error
 #include "AsyncDNSServer_RP2040W.hpp"         //https://github.com/khoih-prog/AsyncDNSServer_RP2040W
 ```
 
 in many files. But be sure to use the following `.h` file **in just 1 `.h`, `.cpp` or `.ino` file**, which must **not be included in any other file**, to avoid `Multiple Definitions` Linker Error
 
-```
+```cpp
 // To be included only in main(), .ino with setup() to avoid `Multiple Definitions` Linker Error
 #include "AsyncDNSServer_RP2040W.h"           //https://github.com/khoih-prog/AsyncDNSServer_RP2040W
 ```
@@ -263,7 +266,8 @@ Submit issues to: [AsyncDNSServer_RP2040W issues](https://github.com/khoih-prog/
 
  1. Add support to RASPBERRY_PI_PICO_W using CYW43439 WiFi
  2. Add more examples.
- 3. Add debugging features.
+ 3. Add debugging features
+ 4. Add astyle using `allman` style. Restyle the library
  
 ---
 ---
@@ -299,6 +303,6 @@ If you want to contribute to this project:
 
 ## Copyright
 
-- Copyright 2016- Develo
-- Copyright 2022- Khoi Hoang
+- Copyright (c) 2016- Develo
+- Copyright (c) 2022- Khoi Hoang
 
