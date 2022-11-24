@@ -22,31 +22,31 @@
 
 #if ( defined(ARDUINO_RASPBERRY_PI_PICO_W) )
 
-	#if (_ASYNCTCP_RP2040W_LOGLEVEL_ > 2)
-		#if defined(ARDUINO_RASPBERRY_PI_PICO_W)
-			#warning RASPBERRY_PI_PICO_W board using CYW4343 WiFi selected
-		#else
-			#warning RP2040-based board selected
-		#endif
-	#endif
+  #if (_ASYNCTCP_RP2040W_LOGLEVEL_ > 2)
+    #if defined(ARDUINO_RASPBERRY_PI_PICO_W)
+      #warning RASPBERRY_PI_PICO_W board using CYW4343 WiFi selected
+    #else
+      #warning RP2040-based board selected
+    #endif
+  #endif
 
-	#if defined(WIFI_USE_RP2040)
-		#undef WIFI_USE_RP2040
-	#endif
-	#define WIFI_USE_RP2040      true
+  #if defined(WIFI_USE_RP2040)
+    #undef WIFI_USE_RP2040
+  #endif
+  #define WIFI_USE_RP2040      true
 
-	#if (_ASYNCTCP_RP2040W_LOGLEVEL_ > 2)
-		#warning Use RP2040 architecture from WiFiWebServer
-	#endif
+  #if (_ASYNCTCP_RP2040W_LOGLEVEL_ > 2)
+    #warning Use RP2040 architecture from WiFiWebServer
+  #endif
 
 #else
 
-	#error For RASPBERRY_PI_PICO_W board using CYW43439 WiFi only
+  #error For RASPBERRY_PI_PICO_W board using CYW43439 WiFi only
 
 #endif
 
 #if defined(SHIELD_TYPE)
-	#undef SHIELD_TYPE
+  #undef SHIELD_TYPE
 #endif
 
 #define SHIELD_TYPE                          "RP2040W CYW43439 WiFi"

@@ -19,9 +19,9 @@
 #define ASYNC_DNS_SERVER_RP2040W_DEBUG_H
 
 #ifdef ASYNC_DNS_RP2040W_DEBUG_PORT
-	#define DBG_PORT_ASYNC_DNS      ASYNC_DNS_RP2040W_DEBUG_PORT
+  #define DBG_PORT_ASYNC_DNS      ASYNC_DNS_RP2040W_DEBUG_PORT
 #else
-	#define DBG_PORT_ASYNC_DNS      Serial
+  #define DBG_PORT_ASYNC_DNS      Serial
 #endif
 
 // Change _ASYNC_DNS_RP2040W_LOGLEVEL_ to set tracing and logging verbosity
@@ -32,7 +32,7 @@
 // 4: DEBUG: errors, warnings, informational and debug
 
 #ifndef _ASYNC_DNS_RP2040W_LOGLEVEL_
-	#define _ASYNC_DNS_RP2040W_LOGLEVEL_       0
+  #define _ASYNC_DNS_RP2040W_LOGLEVEL_       0
 #endif
 
 /////////////////////////////////////////////////////////

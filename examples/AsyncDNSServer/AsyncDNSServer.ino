@@ -24,99 +24,99 @@ int status = WL_IDLE_STATUS;
 
 void handleNotFound(AsyncWebServerRequest *request)
 {
-	String message = "Hello World from " + String(BOARD_NAME) + " using CYW43439 WiFi\n\n";
-	message += "URI: ";
-	message += request->url();
+  String message = "Hello World from " + String(BOARD_NAME) + " using CYW43439 WiFi\n\n";
+  message += "URI: ";
+  message += request->url();
 
-	request->send(200, "text/plain", message);
+  request->send(200, "text/plain", message);
 }
 
 void printWifiStatus()
 {
-	// print the SSID of the network you're attached to:
-	Serial.print("SSID: ");
-	Serial.println(WiFi.SSID());
+  // print the SSID of the network you're attached to:
+  Serial.print("SSID: ");
+  Serial.println(WiFi.SSID());
 
-	// print your board's IP address:
-	IPAddress ip = WiFi.localIP();
-	Serial.print("Local IP Address: ");
-	Serial.println(ip);
+  // print your board's IP address:
+  IPAddress ip = WiFi.localIP();
+  Serial.print("Local IP Address: ");
+  Serial.println(ip);
 
-	// print the received signal strength:
-	long rssi = WiFi.RSSI();
-	Serial.print("signal strength (RSSI):");
-	Serial.print(rssi);
-	Serial.println(" dBm");
+  // print the received signal strength:
+  long rssi = WiFi.RSSI();
+  Serial.print("signal strength (RSSI):");
+  Serial.print(rssi);
+  Serial.println(" dBm");
 }
 
 void setup()
 {
-	Serial.begin(115200);
+  Serial.begin(115200);
 
-	while (!Serial && millis() < 5000);
+  while (!Serial && millis() < 5000);
 
-	Serial.print("\nStart AsyncDNSServer on ");
-	Serial.println(BOARD_NAME);
-	Serial.println(ASYNC_DNS_SERVER_RP2040W_VERSION);
+  Serial.print("\nStart AsyncDNSServer on ");
+  Serial.println(BOARD_NAME);
+  Serial.println(ASYNC_DNS_SERVER_RP2040W_VERSION);
 
 #if defined(ASYNC_DNS_SERVER_RP2040W_VERSION_MIN)
 
-	if (ASYNC_DNS_SERVER_RP2040W_VERSION_INT < ASYNC_DNS_SERVER_RP2040W_VERSION_MIN)
-	{
-		Serial.print("Warning. Must use this example on Version equal or later than : ");
-		Serial.println(ASYNC_DNS_SERVER_RP2040W_VERSION_MIN_TARGET);
-	}
+  if (ASYNC_DNS_SERVER_RP2040W_VERSION_INT < ASYNC_DNS_SERVER_RP2040W_VERSION_MIN)
+  {
+    Serial.print("Warning. Must use this example on Version equal or later than : ");
+    Serial.println(ASYNC_DNS_SERVER_RP2040W_VERSION_MIN_TARGET);
+  }
 
 #endif
 
-	///////////////////////////////////
+  ///////////////////////////////////
 
-	// check for the WiFi module:
-	if (WiFi.status() == WL_NO_MODULE)
-	{
-		Serial.println("Communication with WiFi module failed!");
+  // check for the WiFi module:
+  if (WiFi.status() == WL_NO_MODULE)
+  {
+    Serial.println("Communication with WiFi module failed!");
 
-		// don't continue
-		while (true);
-	}
+    // don't continue
+    while (true);
+  }
 
-	Serial.print(F("Connecting to SSID: "));
-	Serial.println(ssid);
+  Serial.print(F("Connecting to SSID: "));
+  Serial.println(ssid);
 
-	status = WiFi.begin(ssid, pass);
+  status = WiFi.begin(ssid, pass);
 
-	delay(1000);
+  delay(1000);
 
-	// attempt to connect to WiFi network
-	while ( status != WL_CONNECTED)
-	{
-		delay(500);
+  // attempt to connect to WiFi network
+  while ( status != WL_CONNECTED)
+  {
+    delay(500);
 
-		// Connect to WPA/WPA2 network
-		status = WiFi.status();
-	}
+    // Connect to WPA/WPA2 network
+    status = WiFi.status();
+  }
 
-	printWifiStatus();
+  printWifiStatus();
 
-	///////////////////////////////////
+  ///////////////////////////////////
 
-	// modify TTL associated  with the domain name (in seconds)
-	// default is 60 seconds
-	dnsServer.setTTL(300);
-	// set which return code will be used for all other domains
-	// (e.g. sending ServerFailure instead of NonExistentDomain will reduce number of queries
-	// sent by clients). Default is AsyncDNSReplyCode::NonExistentDomain
-	dnsServer.setErrorReplyCode(AsyncDNSReplyCode::ServerFailure);
+  // modify TTL associated  with the domain name (in seconds)
+  // default is 60 seconds
+  dnsServer.setTTL(300);
+  // set which return code will be used for all other domains
+  // (e.g. sending ServerFailure instead of NonExistentDomain will reduce number of queries
+  // sent by clients). Default is AsyncDNSReplyCode::NonExistentDomain
+  dnsServer.setErrorReplyCode(AsyncDNSReplyCode::ServerFailure);
 
-	// start DNS server for a specific domain name
-	dnsServer.start(DNS_PORT, "*", apIP);
+  // start DNS server for a specific domain name
+  dnsServer.start(DNS_PORT, "*", apIP);
 
-	server.onNotFound(handleNotFound);
+  server.onNotFound(handleNotFound);
 
-	server.begin();
+  server.begin();
 
-	Serial.print(F("HTTP EthernetWebServer is @ IP : "));
-	Serial.println(apIP);
+  Serial.print(F("HTTP EthernetWebServer is @ IP : "));
+  Serial.println(apIP);
 }
 
 void loop()

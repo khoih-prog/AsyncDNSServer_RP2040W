@@ -11,7 +11,7 @@
 #define defines_h
 
 #if !( defined(ARDUINO_RASPBERRY_PI_PICO_W) )
-	#error For RASPBERRY_PI_PICO_W only
+  #error For RASPBERRY_PI_PICO_W only
 #endif
 
 #define ASYNC_DNS_RP2040W_DEBUG_PORT       Serial
@@ -20,7 +20,7 @@
 #define _ASYNC_DNS_RP2040W_LOGLEVEL_       4
 
 #if (_ASYNC_DNS_RP2040W_LOGLEVEL_ > 3)
-	#warning Using RASPBERRY_PI_PICO_W with CYW43439 WiFi
+  #warning Using RASPBERRY_PI_PICO_W with CYW43439 WiFi
 #endif
 
 char ssid[] = "your_ssid";        // your network SSID (name)
